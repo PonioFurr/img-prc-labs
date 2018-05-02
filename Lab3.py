@@ -40,6 +40,8 @@ for i in range(img_result_GRY.shape[0]):
         img_result_GRY[i, j] = clamp(result, (0, 255))
 
 cv2.imwrite('renders/Lab3.png', img_result_GRY)
+cv2.imwrite('renders/Lab3_histogram_before.png', hist_image(imgGRY))
+cv2.imwrite('renders/Lab3_histogram_after.png', hist_image(img_result_GRY))
 
 cv2.imshow("Histogram before", hist_image(imgGRY))
 cv2.imshow("Histogram after", hist_image(img_result_GRY))

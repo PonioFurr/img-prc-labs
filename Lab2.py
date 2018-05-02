@@ -14,7 +14,7 @@ for i in range(imgHSV.shape[0]):
             imgBIN[i, j, 0] = 255
 
 
-cv2.imwrite('renders/Binary.png', imgBIN)
+cv2.imwrite('renders/Lab2.png', imgBIN)
 cv2.imshow("Original", imgRGB)
 cv2.imshow("Result", imgBIN)
 

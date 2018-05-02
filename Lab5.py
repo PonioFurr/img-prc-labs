@@ -32,15 +32,17 @@ for x in range(ceil_xnum):
 #   Calculation
 for i in range(img_GRY.shape[0]):
     for j in range(img_GRY.shape[1]):
-        img_HSV[i, j, 0] = (math.sqrt(((int(img_GRY[(i + 1) % img_HSV.shape[0], j, 0]) -
-                                        int(img_GRY[i - 1, j, 0])) / 2) ** 2 +
-                                      ((int(img_GRY[i, (j + 1) % img_HSV.shape[1], 0]) -
-                                        int(img_GRY[i, j - 1, 0])) / 2) ** 2)) / 255 * 180
-        img_HSV[i, j, 1] = math.fabs(int(img_GRY[(i + 1) % img_HSV.shape[0], j, 0]) - int(img_GRY[i - 1, j, 0])) // 2
-        img_HSV[i, j, 2] = math.fabs(int(img_GRY[i, (j + 1) % img_HSV.shape[1], 0]) - int(img_GRY[i, j - 1, 0])) // 2
+        dx = (int(img_GRY[(i + 1) % img_HSV.shape[0], j, 0]) - int(img_GRY[i - 1, j, 0])) // 2
+        dy = (int(img_GRY[i, (j + 1) % img_HSV.shape[1], 0]) - int(img_GRY[i, j - 1, 0])) // 2
+        img_HSV[i, j, 1] = 128 + dx
+        img_HSV[i, j, 2] = 128 + dy
+        img_HSV[i, j, 0] = math.sqrt(dx ** 2 + dy ** 2) / math.sqrt(128 ** 2 + 128 ** 2) * 180
 
 
 img_RGB = cv2.cvtColor(img_HSV, cv2.COLOR_HSV2BGR)
+
+cv2.imwrite('renders/Lab5_original.png', img_GRY)
+cv2.imwrite('renders/Lab5_result.png', img_RGB)
 
 cv2.imshow("Original", img_GRY)
 cv2.imshow("Result", img_RGB)

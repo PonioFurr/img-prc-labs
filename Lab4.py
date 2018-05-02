@@ -26,6 +26,12 @@ img_another_RGB = cv2.filter2D(imgRGB, -1, kernel_another)
 img_median_RGB = cv2.medianBlur(imgRGB, 3)
 
 
+cv2.imwrite('renders/Lab4_filter_1.png', img_filter_RGB)
+cv2.imwrite('renders/Lab4_filter_2.png', img_another_RGB)
+cv2.imwrite('renders/Lab4_gauss.png', img_gauss_RGB)
+cv2.imwrite('renders/Lab4_median.png', img_median_RGB)
+cv2.imwrite('renders/Lab4_box.png', img_box_RGB)
+
 cv2.imshow("Original", imgRGB)
 cv2.imshow("Filter", img_filter_RGB)
 cv2.imshow("Another filter", img_another_RGB)
